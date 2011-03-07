@@ -1,0 +1,72 @@
+ul.gallery-layout {margin:0;padding:0;}
+.gallery-layout li {float:left;padding:10px;list-style:none;margin:0;}
+.gallery-layout li:hover {background:#ddd;}
+#album-list ul li {list-style:none;overflow:hidden;margin-bottom:20px;clear:both;}
+#album-list ul li .defaultImage {width:124px;float:left;}
+#album-list ul li .defaultImage a {display:block;padding:12px;width:100%;text-align:center;}
+#album-list ul li .defaultImage a img {margin:0;padding:0;}
+#album-list ul li .defaultImage a:hover {background:#ccc;}
+#album-list ul li .galleryDetails {width:300px;float:left;padding:12px 0 20px 40px;}
+#album-list ul li h4 {margin:0;padding:0;}
+
+#pagination-imagegallery {border:0; margin:10px 0 0 0; padding:0;clear:both;}
+#pagination-imagegallery li{
+border:0; margin:0; padding:0;
+font-size:11px;
+list-style:none;
+margin-right:2px;
+display:inline;
+}
+#pagination-imagegallery a{
+border:solid 1px #9aafe5;
+margin-right:2px;
+}
+#pagination-imagegallery .previous-off,
+#pagination-imagegallery .next-off {
+border:solid 1px #DEDEDE;
+color:#888888;
+display:block;
+float:left;
+font-weight:bold;
+margin-right:2px;
+padding:3px 4px;
+}
+#pagination-imagegallery .next a,
+#pagination-imagegallery .previous a {
+font-weight:bold;
+}
+#pagination-imagegallery .active{
+background:#2e6ab1;
+color:#FFFFFF;
+font-weight:bold;
+display:block;
+float:left;
+padding:4px 6px;
+}
+#pagination-imagegallery a:link,
+#pagination-imagegallery a:visited {
+color:#0e509e
+display:block;
+float:left;
+padding:3px 6px;
+text-decoration:none;
+}
+#pagination-imagegallery a:hover{
+border:solid 1px #0e509e;
+}
+.gallery-layout:after{content:".";display:block;visibility:hidden;height:0;clear:both;}
+.gallery-layout {zoom:1;}
+.gallery-layout {background: url('../images/ajax-loader-lg.gif') center no-repeat;}
+.gallery-layout.loaded {background:none;}
+.gallery-layout li a {visibility:hidden;}
+.gallery-layout.loaded li a {visibility:visible;}
+
+.album-nav {overflow:hidden;border:1px solid #aaa;border-width:1px 0;padding:5px 0;margin:10px 0;}
+.album-nav ul {margin:0;padding:0;}
+.album-nav li {width:48%;margin:0;padding:1%;list-style:none;}
+.album-nav li.next {float:right;}
+.album-nav li.prev {float:left;}
+.album-nav li:hover {background:#ddd;}
+.album-nav li .album-nav-img {width:20%;float:left;}
+.album-nav li .album-nav-desc {width:75%;float:right;}
+.album-nav h4 {border:0;font-size:12px;margin:0;}
