@@ -286,6 +286,7 @@ class ImageGalleryPage extends Page
 					$item->ViewLink = $normalImg->URL;
 					$item->setUI($this->UI);
 				}
+				// XXX: it would be nice to have some error-reporting for failed thumbs here..
 			}
 	  	return $this->UI->updateItems($items);
 		}
