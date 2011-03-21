@@ -141,7 +141,6 @@ class ImageGalleryManager extends ImageDataObjectManager
 	public function getPreviewFieldFor($fileObject, $size = 150)
 	{
 		if($fileObject instanceof Image) {
-		echo $fileObject->ID . " " . $fileObject->Filename;
 			$URL = $fileObject->SetHeight($size)->URL;
 			return new LiteralField("icon",
 				"<div class='current-image'>
