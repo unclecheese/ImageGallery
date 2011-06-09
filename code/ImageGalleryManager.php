@@ -160,7 +160,7 @@ class ImageGalleryManager extends ImageDataObjectManager
 	
 	public function RotateLink($imgObj, $dir)
 	{
-		return "ImageGalleryManager_Controller/rotateimage/{$imgObj->ID}/{$dir}?flush=1";
+		return Controller::join_links("ImageGalleryManager_Controller","rotateimage",$imgObj->ID,$dir,"?flush=1");
 	}
 	
 	private function CounterClockwiseLink($fileObject)
