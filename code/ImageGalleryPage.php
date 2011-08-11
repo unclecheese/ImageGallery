@@ -63,19 +63,34 @@ class ImageGalleryPage extends Page
 		if( $this->ID ) $this->checkFolder();
 		parent::onAfterWrite();
 	}
-	/*
 	function onBeforeDelete()
 	{
+		// check if Page still exists in live mode
+		$livePage = Versioned::get_one_by_stage(get_class(), "Live", get_class()."_Live.ID = ".$this->ID);
+		// check if Page still exists in stage mode
+		$stagePage = Versioned::get_one_by_stage(get_class(), "Stage", get_class().".ID = ".$this->ID);
+		
+		// if Page only exists in Live OR Stage mode -> Page will be deleted comletely
+		if(!($livePage && $stagePage)) {
+			
+			// delete existing Albums 
+			if($this->Albums()) {
+				foreach($this->Albums() as $album) {
+					$album->delete();
+				}
+			}
+			
+			$this->RootFolder()->delete(); // delete root folder of ImageGallerPage
+		}
+		
 		parent::onBeforeDelete();
-		$this->RootFolder()->delete();
 	}
-	*/
 	function checkFolder() {
 		if( ! $this->RootFolderID ) {
 			$galleries = Folder::findOrMake('image-gallery');
 			$galleries->Title = 'Image Gallery';
 			$galleries->write();
-			$folder = Folder::findOrMake('image-gallery/' . $this->URLSegment);
+			$folder = Folder::findOrMake('image-gallery/' . SiteTree::generateURLSegment($this->Title));
 			$folder->Title = $this->Title;
 			$folder->setName($this->Title);
 			$folder->write();
@@ -89,8 +104,7 @@ class ImageGalleryPage extends Page
 		else {
 			$this->RootFolder()->setName($this->Title);
 			$this->RootFolder()->write();
-		}
-			
+		}	
 	}
 
 		
