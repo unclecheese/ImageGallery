@@ -128,8 +128,8 @@ class ImageGalleryPage extends Page
 		$f = parent::getCMSFields($cms);
 		$f->addFieldToTab("Root.Content.$configuration", new HeaderField($title = _t('ImageGalleryPage.ALBUMCOVERIMAGES','Album cover images'), $headingLevel = "6"));
 		$f->addFieldToTab("Root.Content.$configuration", new FieldGroup(
-				new NumericField('CoverImageWidth','Width'),
-				new NumericField('CoverImageHeight','Height')
+				new NumericField('CoverImageWidth',_t('ImageGalleryPage.WIDTH','Width')),
+				new NumericField('CoverImageHeight',_t('ImageGalleryPage.HEIGHT','Height'))
 			)
 		);
 		$f->addFieldToTab("Root.Content.$configuration", new NumericField('ThumbnailSize',_t('ImageGalleryPage.THUMBNAILHEIGHT','Thumbnail height (pixels)')));
