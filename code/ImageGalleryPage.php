@@ -63,21 +63,35 @@ class ImageGalleryPage extends Page
 		if( $this->ID ) $this->checkFolder();
 		parent::onAfterWrite();
 	}
-	/*
 	function onBeforeDelete()
 	{
+		// check if Page still exists in live mode
+		$livePage = Versioned::get_one_by_stage(get_class(), "Live", get_class()."_Live.ID = ".$this->ID);
+		// check if Page still exists in stage mode
+		$stagePage = Versioned::get_one_by_stage(get_class(), "Stage", get_class().".ID = ".$this->ID);
+		
+		// if Page only exists in Live OR Stage mode -> Page will be deleted completely
+		if(!($livePage && $stagePage)) {
+			// delete existing Albums 
+			if($this->Albums()) {
+				foreach($this->Albums() as $album) {
+					$album->delete();
+				}
+			}
+			$this->RootFolder()->delete(); // delete root folder of ImageGalleryPage
+		}
+		
 		parent::onBeforeDelete();
-		$this->RootFolder()->delete();
 	}
-	*/
 	function checkFolder() {
+		$clean_name = SiteTree::generateURLSegment($this->Title);
 		if( ! $this->RootFolderID ) {
 			$galleries = Folder::findOrMake('image-gallery');
 			$galleries->Title = 'Image Gallery';
 			$galleries->write();
-			$folder = Folder::findOrMake('image-gallery/' . $this->URLSegment);
+			$folder = Folder::findOrMake('image-gallery/' . $clean_name);
 			$folder->Title = $this->Title;
-			$folder->setName($this->Title);
+			$folder->setName($clean_name);
 			$folder->write();
 			
 			$this->RootFolderID = $folder->ID;
@@ -87,12 +101,10 @@ class ImageGalleryPage extends Page
 			FormResponse::add( "\$( 'Form_EditForm' ).getPageFromServer( $this->ID );" );
 		}
 		else {
-			$this->RootFolder()->setName($this->Title);
+			$this->RootFolder()->setName($clean_name);
 			$this->RootFolder()->write();
-		}
-			
+		}	
 	}
-
 		
 	private function requireDefaultAlbum()
 	{
@@ -116,8 +128,8 @@ class ImageGalleryPage extends Page
 		$f = parent::getCMSFields($cms);
 		$f->addFieldToTab("Root.Content.$configuration", new HeaderField($title = _t('ImageGalleryPage.ALBUMCOVERIMAGES','Album cover images'), $headingLevel = "6"));
 		$f->addFieldToTab("Root.Content.$configuration", new FieldGroup(
-				new NumericField('CoverImageWidth','Width'),
-				new NumericField('CoverImageHeight','Height')
+				new NumericField('CoverImageWidth',_t('ImageGalleryPage.WIDTH','Width')),
+				new NumericField('CoverImageHeight',_t('ImageGalleryPage.HEIGHT','Height'))
 			)
 		);
 		$f->addFieldToTab("Root.Content.$configuration", new NumericField('ThumbnailSize',_t('ImageGalleryPage.THUMBNAILHEIGHT','Thumbnail height (pixels)')));
