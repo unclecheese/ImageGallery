@@ -42,5 +42,6 @@ $lang['en_US']['ImageGalleryPage_album.ss']['PREVIOUSALBUM'] = 'Previous Album';
 $lang['en_US']['ImageGalleryPage_album.ss']['VIEWNEXTPAGE'] = 'View the next page';
 $lang['en_US']['ImageGalleryPage_album.ss']['VIEWPAGENUMBER'] = 'View page number %s';
 $lang['en_US']['ImageGalleryPage_album.ss']['VIEWPREVIOUSPAGE'] = 'View the previous page';
+$lang['en_US']['AlbumList.ss']['IMAGECOUNT'] = '%s photos';
 
 ?>
