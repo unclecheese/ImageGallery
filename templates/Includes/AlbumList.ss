@@ -14,7 +14,7 @@
 				</a>
 			</div>
 			<div class="galleryDetails">
-				<h4><a href="$Link" title="$Title">$AlbumName</a> ($ImageCount photos)</h4>
+				<h4><a href="$Link" title="$Title">$AlbumName</a> (<% sprintf(_t('AlbumList.IMAGECOUNT','%s photos'),$ImageCount) %>)</h4>
 				<div class="galleryDescription">$Description.LimitWordCount(60)</div>	
 			</div>
 			</li>
