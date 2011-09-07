@@ -25,7 +25,7 @@ $lang['en_US']['ImageGalleryPage']['ANALBUM'] = 'an Album';
 $lang['en_US']['ImageGalleryPage']['CONFIGURATION'] = 'Configuration';
 $lang['en_US']['ImageGalleryPage']['IMAGES'] = 'Images';
 $lang['en_US']['ImageGalleryPage']['IMAGESPERPAGE'] = 'Number of images per page';
-$lang['en_US']['ImageGalleryPage']['MAXFILES'] = 'Max files allowed in upload quue';
+$lang['en_US']['ImageGalleryPage']['MAXFILES'] = 'Max files allowed in upload queue';
 $lang['en_US']['ImageGalleryPage']['NOALBUMS'] = 'You have no albums. Click on the Albums tab to create at least one album before adding photos.';
 $lang['en_US']['ImageGalleryPage']['NORMALSIZE'] = 'Normal size (pixels)';
 $lang['en_US']['ImageGalleryPage']['PHOTOS'] = 'Photos';
@@ -42,5 +42,6 @@ $lang['en_US']['ImageGalleryPage_album.ss']['PREVIOUSALBUM'] = 'Previous Album';
 $lang['en_US']['ImageGalleryPage_album.ss']['VIEWNEXTPAGE'] = 'View the next page';
 $lang['en_US']['ImageGalleryPage_album.ss']['VIEWPAGENUMBER'] = 'View page number %s';
 $lang['en_US']['ImageGalleryPage_album.ss']['VIEWPREVIOUSPAGE'] = 'View the previous page';
+$lang['en_US']['AlbumList.ss']['IMAGECOUNT'] = '%s photos';
 
 ?>
