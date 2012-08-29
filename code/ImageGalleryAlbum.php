@@ -75,7 +75,7 @@ class ImageGalleryAlbum extends DataObject
 	{
 		parent::onBeforeDelete();
 		$this->GalleryItems()->removeAll();
-		$this->Folder()->delete();
+		if($this->Folder()->ID) $this->Folder()->delete();
 	}
 	
 	
