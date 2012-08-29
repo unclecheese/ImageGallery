@@ -78,7 +78,7 @@ class ImageGalleryPage extends Page
 					$album->delete();
 				}
 			}
-			$this->RootFolder()->delete(); // delete root folder of ImageGalleryPage
+			if($this->RootFolder()->ID) $this->RootFolder()->delete(); // delete root folder of ImageGalleryPage
 		}
 		
 		parent::onBeforeDelete();
